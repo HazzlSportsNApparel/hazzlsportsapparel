@@ -15,9 +15,9 @@ const gallery = [
   ["featured-01.jpeg", "Custom baseball jersey"],
   
   ["featured-03.jpeg", "Corporate Apparel"],
-  ["featured-04.jpeg", "Mound Pounders jersey"],
+  ["featured-04.jpeg", "Corporate Shirts"],
   ["featured-05.jpeg", "Team apparel design"],
-  ["featured-06.jpeg", "Custom Team Uniform"],
+  ["featured-06.jpeg", "Custom Oilfield To Softball/Baseball Field apparel"],
   ["featured-07.jpeg", "Custom branded shirt"]
 ];
 
