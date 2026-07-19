@@ -197,7 +197,14 @@ export default function Home() {
               required
             />
           </label>
-
+<label className="wide">
+  Discount code
+  <input
+    name="discountCode"
+    placeholder="Enter code if you have one"
+    autoCapitalize="characters"
+  />
+</label>
           <label className="wide">
             Sport or product
             <select name="product" defaultValue="Baseball">
