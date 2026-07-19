@@ -13,7 +13,7 @@ const categories = [
 
 const gallery = [
   ["featured-01.jpeg", "Custom baseball jersey"],
-  ["featured-02.jpeg", "Weekend Warriors apparel"],
+  
   ["featured-03.jpeg", "Custom team uniform"],
   ["featured-04.jpeg", "Mound Pounders jersey"],
   ["featured-05.jpeg", "Team apparel design"],
