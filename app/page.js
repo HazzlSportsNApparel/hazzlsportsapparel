@@ -18,7 +18,7 @@ const gallery = [
   ["featured-04.jpeg", "Corporate Shirts"],
   ["featured-05.jpeg", "Team apparel design"],
   ["featured-06.jpeg", "Custom Oilfield To Softball/Baseball Field apparel"],
-  ["featured-07.jpeg", "Custom branded shirt"]
+  ["featured-07.jpeg", "Custom Logos and designs made just for you"]
 ];
 
 const QUOTE_FORM_URL =
