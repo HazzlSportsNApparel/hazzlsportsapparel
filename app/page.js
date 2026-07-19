@@ -205,32 +205,38 @@ export default function Home() {
     autoCapitalize="characters"
   />
 </label>
-          <label className="wide">
-            Sport or product
-            <select name="product" defaultValue="Baseball">
-              <option>Baseball</option>
-              <option>Softball</option>
-              <option>Football</option>
-              <option>Basketball</option>
-              <option>Soccer</option>
-              <option>Corporate Apparel</option>
-              <option>Custom Shirts</option>
-              <option>Hats or Accessories</option>
-              <option>Other</option>
-            </select>
-          </label>
+          
+<div className="wide">
+  <h3>Products Requested</h3>
+</div>
 
-          <label>
-            Quantity
-            <input
-              name="quantity"
-              type="number"
-              min="1"
-              placeholder="Example: 12"
-              required
-            />
-          </label>
+<label>
+  Product 1
+  <select name="product1">
+    <option value="">Select Item</option>
+    <option>Full Button Jersey</option>
+    <option>2 Button Jersey</option>
+    <option>V-Neck Jersey</option>
+    <option>Crew Neck Jersey</option>
+    <option>Knicker Pants</option>
+    <option>Full Length Pants</option>
+    <option>Full Uniform</option>
+    <option>DriFit Shirt</option>
+    <option>Polo Shirt</option>
+    <option>Hoodie</option>
+    <option>Hat</option>
+    <option>Arm Sleeve</option>
+  </select>
+</label>
 
+<label>
+  Quantity
+  <input
+    name="quantity1"
+    type="number"
+    min="1"
+  />
+</label>
           <label>
             Needed by
             <input
