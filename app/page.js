@@ -312,7 +312,7 @@ export default function Home() {
         </form>
       </section>
 
-      <section className="contactSection" id="contact">
+      
 
       <section className="contactSection" id="contact">
         <div>
