@@ -236,7 +236,34 @@ export default function Home() {
     type="number"
     min="1"
   />
+<label>
+  Product 2
+  <select name="product2">
+    <option value="">Select Item</option>
+    <option>Full Button Jersey</option>
+    <option>2 Button Jersey</option>
+    <option>V-Neck Jersey</option>
+    <option>Crew Neck Jersey</option>
+    <option>Knicker Pants</option>
+    <option>Full Length Pants</option>
+    <option>Full Uniform</option>
+    <option>DriFit Shirt</option>
+    <option>Polo Shirt</option>
+    <option>Hoodie</option>
+    <option>Hat</option>
+    <option>Arm Sleeve</option>
+  </select>
 </label>
+
+<label>
+  Quantity
+  <input
+    name="quantity2"
+    type="number"
+    min="1"
+  />
+</label>
+      </label>
           <label>
             Needed by
             <input
