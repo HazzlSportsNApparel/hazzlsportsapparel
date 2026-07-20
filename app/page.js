@@ -384,7 +384,7 @@ export default function Home() {
             Send Quote Request
           </button>
 
-          {submitted && (
+                    {submitted && (
             <p className="wide" role="status">
               Thank you! Your quote request has been received. HĀZZL Sports
               & Apparel will contact you soon.
@@ -392,6 +392,8 @@ export default function Home() {
           )}
         </form>
       </section>
+
+      <section className="contactSection" id="contact">
 
       <section className="contactSection" id="contact">
         <div>
