@@ -213,20 +213,36 @@ export default function Home() {
 <label>
   Product 1
   <select name="product1">
-    <option value="">Select Item</option>
-    <option>Full Button Jersey</option>
-    <option>2 Button Jersey</option>
-    <option>V-Neck Jersey</option>
-    <option>Crew Neck Jersey</option>
-    <option>Knicker Pants</option>
-    <option>Full Length Pants</option>
-    <option>Full Uniform</option>
-    <option>DriFit Shirt</option>
-    <option>Polo Shirt</option>
-    <option>Hoodie</option>
-    <option>Hat</option>
-    <option>Arm Sleeve</option>
-  </select>
+  <option value="">Select Item</option>
+  <option>Crew Neck Jersey</option>
+  <option>V-Neck Jersey</option>
+  <option>Full Button Jersey</option>
+  <option>2-Button Jersey</option>
+  <option>Full Length Pants</option>
+  <option>Knicker Pants</option>
+  <option>Complete Uniform Package</option>
+  <option>Long Sleeve Jersey</option>
+  <option>Hoodie</option>
+  <option>Batting Jacket</option>
+  <option>Quarter Zip Pullover</option>
+  <option>Cap</option>
+  <option>Arm Sleeves (Pair)</option>
+  <option>Headband</option>
+  <option>Backpack</option>
+  <option>Duffle Bag</option>
+  <option>Corporate Polo</option>
+  <option>Corporate T-Shirt Cotton or 50/50</option>
+  <option>Custom Rolling Bat Bag</option>
+  <option>Bat Pack</option>
+  <option>Flag Football Jersey</option>
+  <option>Tackle Jersey With Pads</option>
+  <option>Customized Flag/7V7 Helmets</option>
+  <option>Soccer Jersey</option>
+  <option>Basketball Jersey</option>
+  <option>Volleyball Sleeveless</option>
+  <option>DriFit Shirt</option>
+  <option>Other</option>
+</select>
 </label>
 
 <label>
@@ -240,20 +256,36 @@ export default function Home() {
 <label>
   Product 2
   <select name="product2">
-    <option value="">Select Item</option>
-    <option>Full Button Jersey</option>
-    <option>2 Button Jersey</option>
-    <option>V-Neck Jersey</option>
-    <option>Crew Neck Jersey</option>
-    <option>Knicker Pants</option>
-    <option>Full Length Pants</option>
-    <option>Full Uniform</option>
-    <option>DriFit Shirt</option>
-    <option>Polo Shirt</option>
-    <option>Hoodie</option>
-    <option>Hat</option>
-    <option>Arm Sleeve</option>
-  </select>
+  <option value="">Select Item</option>
+  <option>Crew Neck Jersey</option>
+  <option>V-Neck Jersey</option>
+  <option>Full Button Jersey</option>
+  <option>2-Button Jersey</option>
+  <option>Full Length Pants</option>
+  <option>Knicker Pants</option>
+  <option>Complete Uniform Package</option>
+  <option>Long Sleeve Jersey</option>
+  <option>Hoodie</option>
+  <option>Batting Jacket</option>
+  <option>Quarter Zip Pullover</option>
+  <option>Cap</option>
+  <option>Arm Sleeves (Pair)</option>
+  <option>Headband</option>
+  <option>Backpack</option>
+  <option>Duffle Bag</option>
+  <option>Corporate Polo</option>
+  <option>Corporate T-Shirt Cotton or 50/50</option>
+  <option>Custom Rolling Bat Bag</option>
+  <option>Bat Pack</option>
+  <option>Flag Football Jersey</option>
+  <option>Tackle Jersey With Pads</option>
+  <option>Customized Flag/7V7 Helmets</option>
+  <option>Soccer Jersey</option>
+  <option>Basketball Jersey</option>
+  <option>Volleyball Sleeveless</option>
+  <option>DriFit Shirt</option>
+  <option>Other</option>
+</select>
 </label>
 
 <label>
