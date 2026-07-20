@@ -263,7 +263,89 @@ export default function Home() {
     min="1"
   />
 </label>
-      </label>
+      <label>
+  Product 3
+  <select name="product3">
+    <option value="">Select Item</option>
+    <option>Full Button Jersey</option>
+    <option>2 Button Jersey</option>
+    <option>V-Neck Jersey</option>
+    <option>Crew Neck Jersey</option>
+    <option>Knicker Pants</option>
+    <option>Full Length Pants</option>
+    <option>Full Uniform</option>
+    <option>DriFit Shirt</option>
+    <option>Polo Shirt</option>
+    <option>Hoodie</option>
+    <option>Hat</option>
+    <option>Arm Sleeve</option>
+  </select>
+</label>
+
+<label>
+  Quantity
+  <input
+    name="quantity3"
+    type="number"
+    min="1"
+  />
+</label>
+
+<label>
+  Product 4
+  <select name="product4">
+    <option value="">Select Item</option>
+    <option>Full Button Jersey</option>
+    <option>2 Button Jersey</option>
+    <option>V-Neck Jersey</option>
+    <option>Crew Neck Jersey</option>
+    <option>Knicker Pants</option>
+    <option>Full Length Pants</option>
+    <option>Full Uniform</option>
+    <option>DriFit Shirt</option>
+    <option>Polo Shirt</option>
+    <option>Hoodie</option>
+    <option>Hat</option>
+    <option>Arm Sleeve</option>
+  </select>
+</label>
+
+<label>
+  Quantity
+  <input
+    name="quantity4"
+    type="number"
+    min="1"
+  />
+</label>
+
+<label>
+  Product 5
+  <select name="product5">
+    <option value="">Select Item</option>
+    <option>Full Button Jersey</option>
+    <option>2 Button Jersey</option>
+    <option>V-Neck Jersey</option>
+    <option>Crew Neck Jersey</option>
+    <option>Knicker Pants</option>
+    <option>Full Length Pants</option>
+    <option>Full Uniform</option>
+    <option>DriFit Shirt</option>
+    <option>Polo Shirt</option>
+    <option>Hoodie</option>
+    <option>Hat</option>
+    <option>Arm Sleeve</option>
+  </select>
+</label>
+
+<label>
+  Quantity
+  <input
+    name="quantity5"
+    type="number"
+    min="1"
+  />
+</label>
           <label>
             Needed by
             <input
