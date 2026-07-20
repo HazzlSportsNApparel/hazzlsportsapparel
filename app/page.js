@@ -236,6 +236,7 @@ export default function Home() {
     type="number"
     min="1"
   />
+      </label>
 <label>
   Product 2
   <select name="product2">
