@@ -20,6 +20,33 @@ const gallery = [
   ["featured-06.jpeg", "Custom Oilfield To Softball/Baseball Field apparel"],
   ["featured-07.jpeg", "Custom Logos and designs made just for you"]
 ];
+const gallery = [
+  ["featured-01.jpeg", "Custom baseball jersey"],
+  ["featured-03.jpeg", "Corporate Apparel"],
+  ["featured-04.jpeg", "Corporate Shirts"],
+  ["featured-05.jpeg", "Team apparel design"],
+  ["featured-06.jpeg", "Custom Oilfield To Softball/Baseball Field apparel"],
+  ["featured-07.jpeg", "Custom Logos and designs made just for you"]
+];
+
+const shoutouts = [
+  ["mala-mana.jpg", "Mala Mana", "Custom baseball jerseys"],
+  ["torta-lovers-team.jpg", "Torta Lovers", "Custom team jerseys"],
+  ["social-pour.jpg", "The Social Pour", "Corporate polos"],
+  ["mound-pounders-team.jpg", "Mound Pounders", "Custom softball jerseys"],
+  ["weekend-warriors.jpg", "Weekend Warriors", "Custom softball jerseys"],
+  ["misfitz.jpg", "MisFitz", "Custom baseball jerseys"],
+  ["dnow-corporate-shirts.jpg", "DNOW", "Corporate shirts"],
+  ["mike-denise-morales.jpg", "Mike and Denise Morales", "Custom team apparel"],
+  ["darkwing-ducks.jpg", "Darkwing Ducks", "Custom baseball jerseys"],
+  [
+    "unbridled-oilfield-services.jpg",
+    "Unbridled Oilfield Services",
+    "Corporate performance apparel"
+  ],
+];
+
+const productOptions = [
 const productOptions = [
   "Crew Neck Jersey",
   "V-Neck Jersey",
@@ -207,6 +234,33 @@ function updateProduct(indexToUpdate, field, value) {
           ))}
         </div>
       </section>
+     <section className="shoutoutSection" id="team-shoutouts">
+  <div className="sectionHeading">
+    <p className="eyebrow">Customer shout-outs</p>
+    <h2>Teams and businesses we’re proud to outfit.</h2>
+    <p>
+      Thank you to the teams, companies, and customers who trusted
+      HĀZZL Sports & Apparel with their custom uniforms and apparel.
+    </p>
+  </div>
+
+  <div className="shoutoutGrid">
+    {shoutouts.map(([image, name, description]) => (
+      <article className="shoutoutCard" key={image}>
+        <img
+          src={`/images/${image}`}
+          alt={`${name} custom apparel`}
+          loading="lazy"
+        />
+
+        <div className="shoutoutCardText">
+          <h3>{name}</h3>
+          <p>{description}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
 
       <section className="builderSection" id="uniform-builder">
         <div>
