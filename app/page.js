@@ -20,17 +20,78 @@ const gallery = [
   ["featured-06.jpeg", "Custom Oilfield To Softball/Baseball Field apparel"],
   ["featured-07.jpeg", "Custom Logos and designs made just for you"]
 ];
+const productOptions = [
+  "Crew Neck Jersey",
+  "V-Neck Jersey",
+  "Full Button Jersey",
+  "2-Button Jersey",
+  "Full Length Pants",
+  "Knicker Pants",
+  "Complete Uniform Package",
+  "Long Sleeve Jersey",
+  "Hoodie",
+  "Batting Jacket",
+  "Quarter Zip Pullover",
+  "Cap",
+  "Arm Sleeves (Pair)",
+  "Headband",
+  "Backpack",
+  "Duffle Bag",
+  "Corporate Polo",
+  "Corporate T-Shirt Cotton or 50/50",
+  "Custom Rolling Bat Bag",
+  "Bat Pack",
+  "Flag Football Jersey",
+  "Tackle Jersey With Pads",
+  "Customized Flag/7V7 Helmets",
+  "Soccer Jersey",
+  "Basketball Jersey",
+  "Volleyball Sleeveless",
+  "DriFit Shirt",
+  "Other",
+];
 
 const QUOTE_FORM_URL =
   "https://script.google.com/macros/s/AKfycbxhAQ7l3aqLlZmskIKfPCLMiBGURFGs9KuhVOAkSqjWdNnqZTKOOjsnN08W_478wzXr/exec";
 
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
+  const [products, setProducts] = useState([
+  { product: "", quantity: "" },
+  { product: "", quantity: "" },
+]);
+
+function addProduct() {
+  setProducts((currentProducts) => [
+    ...currentProducts,
+    { product: "", quantity: "" },
+  ]);
+}
+
+function removeProduct(indexToRemove) {
+  setProducts((currentProducts) =>
+    currentProducts.filter((_, index) => index !== indexToRemove)
+  );
+}
+
+function updateProduct(indexToUpdate, field, value) {
+  setProducts((currentProducts) =>
+    currentProducts.map((item, index) =>
+      index === indexToUpdate
+        ? { ...item, [field]: value }
+        : item
+    )
+  );
+}
 
   function handleQuoteSubmit(event) {
     const form = event.currentTarget;
 
     setSubmitted(true);
+    setProducts([
+  { product: "", quantity: "" },
+  { product: "", quantity: "" },
+]);
 
     setTimeout(() => {
       form.reset();
@@ -210,92 +271,61 @@ export default function Home() {
   <h3>Products Requested</h3>
 </div>
 
-<label>
-  Product 1
-  <select name="product1">
-  <option value="">Select Item</option>
-  <option>Crew Neck Jersey</option>
-  <option>V-Neck Jersey</option>
-  <option>Full Button Jersey</option>
-  <option>2-Button Jersey</option>
-  <option>Full Length Pants</option>
-  <option>Knicker Pants</option>
-  <option>Complete Uniform Package</option>
-  <option>Long Sleeve Jersey</option>
-  <option>Hoodie</option>
-  <option>Batting Jacket</option>
-  <option>Quarter Zip Pullover</option>
-  <option>Cap</option>
-  <option>Arm Sleeves (Pair)</option>
-  <option>Headband</option>
-  <option>Backpack</option>
-  <option>Duffle Bag</option>
-  <option>Corporate Polo</option>
-  <option>Corporate T-Shirt Cotton or 50/50</option>
-  <option>Custom Rolling Bat Bag</option>
-  <option>Bat Pack</option>
-  <option>Flag Football Jersey</option>
-  <option>Tackle Jersey With Pads</option>
-  <option>Customized Flag/7V7 Helmets</option>
-  <option>Soccer Jersey</option>
-  <option>Basketball Jersey</option>
-  <option>Volleyball Sleeveless</option>
-  <option>DriFit Shirt</option>
-  <option>Other</option>
-</select>
-</label>
+{products.map((item, index) => (
+  <div className="productRequestRow" key={index}>
+    <label>
+      Product {index + 1}
+      <select
+        name={`product${index + 1}`}
+        value={item.product}
+        onChange={(event) =>
+          updateProduct(index, "product", event.target.value)
+        }
+        required={index === 0}
+      >
+        <option value="">Select Item</option>
 
-<label>
-  Quantity
-  <input
-    name="quantity1"
-    type="number"
-    min="1"
-  />
-      </label>
-<label>
-  Product 2
-  <select name="product2">
-  <option value="">Select Item</option>
-  <option>Crew Neck Jersey</option>
-  <option>V-Neck Jersey</option>
-  <option>Full Button Jersey</option>
-  <option>2-Button Jersey</option>
-  <option>Full Length Pants</option>
-  <option>Knicker Pants</option>
-  <option>Complete Uniform Package</option>
-  <option>Long Sleeve Jersey</option>
-  <option>Hoodie</option>
-  <option>Batting Jacket</option>
-  <option>Quarter Zip Pullover</option>
-  <option>Cap</option>
-  <option>Arm Sleeves (Pair)</option>
-  <option>Headband</option>
-  <option>Backpack</option>
-  <option>Duffle Bag</option>
-  <option>Corporate Polo</option>
-  <option>Corporate T-Shirt Cotton or 50/50</option>
-  <option>Custom Rolling Bat Bag</option>
-  <option>Bat Pack</option>
-  <option>Flag Football Jersey</option>
-  <option>Tackle Jersey With Pads</option>
-  <option>Customized Flag/7V7 Helmets</option>
-  <option>Soccer Jersey</option>
-  <option>Basketball Jersey</option>
-  <option>Volleyball Sleeveless</option>
-  <option>DriFit Shirt</option>
-  <option>Other</option>
-</select>
-</label>
+        {productOptions.map((product) => (
+          <option key={product} value={product}>
+            {product}
+          </option>
+        ))}
+      </select>
+    </label>
 
-<label>
-  Quantity
-  <input
-    name="quantity2"
-    type="number"
-    min="1"
-  />
-</label>
+    <label>
+      Quantity
+      <input
+        name={`quantity${index + 1}`}
+        type="number"
+        min="1"
+        value={item.quantity}
+        onChange={(event) =>
+          updateProduct(index, "quantity", event.target.value)
+        }
+        required={index === 0}
+      />
+    </label>
+
+    {products.length > 1 && (
+      <button
+        type="button"
+        className="smallButton"
+        onClick={() => removeProduct(index)}
+      >
+        Remove Product
+      </button>
+    )}
+  </div>
+))}
+
+<button
+  type="button"
+  className="smallButton"
+  onClick={addProduct}
+>
+  + Add Another Product
+</button>
       
           <label>
             Needed by
