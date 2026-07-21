@@ -46,7 +46,7 @@ const shoutouts = [
   ],
 ];
 
-const productOptions = [
+
 const productOptions = [
   "Crew Neck Jersey",
   "V-Neck Jersey",
