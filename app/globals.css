@@ -741,3 +741,153 @@ footer,
 }
   }
 }
+/* =====================================================
+   DENSE 4-COLUMN DESKTOP LAYOUT
+===================================================== */
+
+.categoryGrid,
+.galleryGrid,
+.featureGrid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  width: min(1180px, 94%) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.categoryCard,
+.featureCard {
+  min-height: 0 !important;
+  padding: 18px !important;
+  border-radius: 7px !important;
+}
+
+.categoryCard h3,
+.featureCard h3 {
+  margin: 0 0 6px !important;
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+}
+
+.categoryCard p,
+.featureCard p {
+  margin: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+
+.galleryCard {
+  min-height: 0 !important;
+  border-radius: 7px !important;
+  overflow: hidden !important;
+}
+
+.galleryCard img {
+  display: block !important;
+  width: 100% !important;
+  height: 190px !important;
+  aspect-ratio: auto !important;
+  object-fit: cover !important;
+}
+
+.galleryCard h3,
+.galleryCard p,
+.galleryCard figcaption {
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+}
+
+section {
+  padding-top: 42px !important;
+  padding-bottom: 42px !important;
+}
+
+.sectionHeader {
+  width: min(1180px, 94%) !important;
+  max-width: none !important;
+  margin: 0 auto 22px !important;
+}
+
+.sectionHeader h2 {
+  margin-bottom: 8px !important;
+  font-size: clamp(25px, 2.5vw, 36px) !important;
+}
+
+.sectionHeader p {
+  max-width: 650px !important;
+  margin-bottom: 0 !important;
+  font-size: 14px !important;
+}
+
+.hero {
+  min-height: 420px !important;
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+}
+
+.heroContent {
+  width: min(1180px, 94%) !important;
+  max-width: none !important;
+}
+
+.hero h1 {
+  max-width: 720px !important;
+  margin-bottom: 14px !important;
+  font-size: clamp(38px, 5vw, 62px) !important;
+  line-height: 0.98 !important;
+}
+
+.hero p {
+  max-width: 620px !important;
+  margin-bottom: 18px !important;
+  font-size: 15px !important;
+}
+
+@media (max-width: 950px) {
+  .categoryGrid,
+  .galleryGrid,
+  .featureGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .categoryGrid,
+  .galleryGrid,
+  .featureGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 9px !important;
+    width: 94% !important;
+  }
+
+  .categoryCard,
+  .featureCard {
+    padding: 13px !important;
+  }
+
+  .categoryCard h3,
+  .featureCard h3 {
+    font-size: 14px !important;
+  }
+
+  .categoryCard p,
+  .featureCard p {
+    font-size: 11px !important;
+  }
+
+  .galleryCard img {
+    height: 135px !important;
+  }
+
+  section {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+  }
+
+  .hero {
+    min-height: 340px !important;
+    padding-top: 36px !important;
+    padding-bottom: 36px !important;
+  }
+}
