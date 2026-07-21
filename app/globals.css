@@ -891,3 +891,110 @@ section {
     padding-bottom: 36px !important;
   }
 }
+/* =====================================================
+   CUSTOMER SHOUT-OUTS
+===================================================== */
+
+.shoutoutSection {
+  padding: 42px 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0)
+    );
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.shoutoutSection .sectionHeading {
+  width: min(1180px, 94%);
+  margin: 0 auto 22px;
+}
+
+.shoutoutSection .sectionHeading h2 {
+  margin-bottom: 8px;
+  font-size: clamp(25px, 2.5vw, 36px);
+}
+
+.shoutoutSection .sectionHeading p:last-child {
+  max-width: 720px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.shoutoutGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  width: min(1180px, 94%);
+  margin: 0 auto;
+}
+
+.shoutoutCard {
+  overflow: hidden;
+  background: var(--black-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.shoutoutCard img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #8f8f8f;
+}
+
+.shoutoutCardText {
+  padding: 13px 14px 15px;
+}
+
+.shoutoutCardText h3 {
+  margin: 0 0 5px;
+  color: var(--gold-bright);
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.shoutoutCardText p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+@media (max-width: 950px) {
+  .shoutoutGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .shoutoutSection {
+    padding: 30px 0;
+  }
+
+  .shoutoutGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .shoutoutCard img {
+    height: 135px;
+  }
+
+  .shoutoutCardText {
+    padding: 10px;
+  }
+
+  .shoutoutCardText h3 {
+    font-size: 13px;
+  }
+
+  .shoutoutCardText p {
+    font-size: 10px;
+  }
+}
