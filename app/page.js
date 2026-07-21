@@ -88,13 +88,14 @@ function updateProduct(indexToUpdate, field, value) {
     const form = event.currentTarget;
 
     setSubmitted(true);
-    setProducts([
-  { product: "", quantity: "" },
-  { product: "", quantity: "" },
-]);
+    
 
     setTimeout(() => {
       form.reset();
+      setProducts([
+  { product: "", quantity: "" },
+  { product: "", quantity: "" },
+]);
     }, 500);
 
     setTimeout(() => {
