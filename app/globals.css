@@ -998,3 +998,118 @@ section {
     font-size: 10px;
   }
 }
+/* =====================================================
+   COMPACT QUOTE SECTION
+===================================================== */
+
+.builderSection {
+  padding: 34px 0 !important;
+}
+
+.builderSection > div:first-child {
+  width: min(760px, 92%) !important;
+  margin: 0 auto 18px !important;
+}
+
+.builderSection .eyebrow {
+  margin-bottom: 6px !important;
+  font-size: 10px !important;
+}
+
+.builderSection h2 {
+  margin-bottom: 8px !important;
+  font-size: clamp(24px, 2.4vw, 34px) !important;
+  line-height: 1.08 !important;
+}
+
+.builderSection > div:first-child > p:last-child {
+  max-width: 650px !important;
+  margin-bottom: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+.quoteForm {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px 14px !important;
+  width: min(760px, 92%) !important;
+  margin: 0 auto !important;
+  padding: 18px !important;
+  border-radius: 8px !important;
+}
+
+.quoteForm label {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  margin: 0 !important;
+  font-size: 11px !important;
+}
+
+.quoteForm input,
+.quoteForm select,
+.quoteForm textarea {
+  min-height: 38px !important;
+  padding: 7px 9px !important;
+  font-size: 13px !important;
+  border-radius: 4px !important;
+}
+
+.quoteForm textarea {
+  min-height: 82px !important;
+  resize: vertical;
+}
+
+.quoteForm h3,
+.quoteForm .formSectionHeading {
+  grid-column: 1 / -1 !important;
+  margin: 8px 0 2px !important;
+  font-size: 16px !important;
+}
+
+.productRequestRow {
+  grid-column: 1 / -1 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 110px auto !important;
+  gap: 10px !important;
+  padding: 8px 0 !important;
+}
+
+.productRequestRow .smallButton {
+  min-height: 38px !important;
+  padding: 0 12px !important;
+  font-size: 11px !important;
+}
+
+.quoteForm > .smallButton,
+.quoteForm > button[type="submit"] {
+  min-height: 38px !important;
+  padding: 0 16px !important;
+  font-size: 12px !important;
+}
+
+.quoteForm > button[type="submit"] {
+  grid-column: 1 / -1 !important;
+}
+
+@media (max-width: 650px) {
+  .builderSection {
+    padding: 26px 0 !important;
+  }
+
+  .quoteForm {
+    grid-template-columns: 1fr !important;
+    width: 94% !important;
+    padding: 14px !important;
+    gap: 10px !important;
+  }
+
+  .productRequestRow {
+    grid-template-columns: 1fr !important;
+  }
+
+  .productRequestRow .smallButton {
+    width: 100% !important;
+  }
+}
