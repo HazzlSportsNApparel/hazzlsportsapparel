@@ -84,25 +84,36 @@ function updateProduct(indexToUpdate, field, value) {
   );
 }
 
-  function handleQuoteSubmit(event) {
-    const form = event.currentTarget;
+ async function handleQuoteSubmit(event) {
+  event.preventDefault();
 
-    setSubmitted(true);
-    
+  const form = event.currentTarget;
+  const formData = new FormData(form);
 
-    setTimeout(() => {
-      form.reset();
-      setProducts([
-  { product: "", quantity: "" },
-  { product: "", quantity: "" },
-]);
-    }, 500);
+  setSubmitted(true);
+
+  try {
+    await fetch(QUOTE_FORM_URL, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors",
+    });
+
+    form.reset();
+
+    setProducts([
+      { product: "", quantity: "" },
+      { product: "", quantity: "" },
+    ]);
 
     setTimeout(() => {
       setSubmitted(false);
     }, 8000);
+  } catch (error) {
+    console.error("Quote submission failed:", error);
+    setSubmitted(false);
   }
-
+}
   return (
     <main>
       <div className="announcement">
@@ -209,20 +220,12 @@ function updateProduct(indexToUpdate, field, value) {
           </p>
         </div>
 
-        <iframe
-          name="quote-submit-frame"
-          title="Quote submission"
-          style={{ display: "none" }}
-        />
+        
 
         <form
-          className="quoteForm"
-          action={QUOTE_FORM_URL}
-          method="POST"
-          target="quote-submit-frame"
-          encType="application/x-www-form-urlencoded"
-          onSubmit={handleQuoteSubmit}
-        >
+  className="quoteForm"
+  onSubmit={handleQuoteSubmit}
+>
           <label>
             Name
             <input
