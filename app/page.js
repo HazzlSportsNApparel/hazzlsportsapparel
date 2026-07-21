@@ -20,14 +20,7 @@ const gallery = [
   ["featured-06.jpeg", "Custom Oilfield To Softball/Baseball Field apparel"],
   ["featured-07.jpeg", "Custom Logos and designs made just for you"]
 ];
-const gallery = [
-  ["featured-01.jpeg", "Custom baseball jersey"],
-  ["featured-03.jpeg", "Corporate Apparel"],
-  ["featured-04.jpeg", "Corporate Shirts"],
-  ["featured-05.jpeg", "Team apparel design"],
-  ["featured-06.jpeg", "Custom Oilfield To Softball/Baseball Field apparel"],
-  ["featured-07.jpeg", "Custom Logos and designs made just for you"]
-];
+
 
 const shoutouts = [
   ["mala-mana.jpg", "Mala Mana", "Custom baseball jerseys"],
