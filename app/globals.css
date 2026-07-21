@@ -28,13 +28,13 @@ a {
 }
 
 .announcement {
-  padding: 10px 20px;
+  padding: 7px 16px;
   background: var(--gold);
   color: #000;
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 1.1px;
+  letter-spacing: 0.9px;
   text-transform: uppercase;
 }
 
@@ -45,9 +45,9 @@ a {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 30px;
-  padding: 16px 5%;
-  background: rgba(4, 4, 4, 0.94);
+  gap: 20px;
+  padding: 10px 4%;
+  background: rgba(4, 4, 4, 0.96);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(12px);
 }
@@ -55,16 +55,17 @@ a {
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 9px;
   color: var(--gold-bright);
+  font-size: 14px;
   font-weight: 900;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   text-decoration: none;
 }
 
 .brand img {
-  width: 52px;
-  height: 52px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -72,12 +73,12 @@ a {
 .nav {
   display: flex;
   justify-content: center;
-  gap: 28px;
+  gap: 20px;
 }
 
 .nav a {
   color: #ddd;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   text-decoration: none;
 }
@@ -92,28 +93,14 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  padding: 0 22px;
+  min-height: 40px;
+  padding: 0 18px;
   border: 1px solid var(--gold);
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 13px;
   font-weight: 900;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.7px;
-  cursor: pointer;
 }
-
-.smallButton,
-.primaryButton {
-  background: var(--gold);
-  color: #090909;
-}
-
-.secondaryButton {
-  background: transparent;
-  color: var(--gold-bright);
-}
-
 .hero {
   position: relative;
   min-height: 740px;
