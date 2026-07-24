@@ -392,9 +392,24 @@ function updateProduct(indexToUpdate, field, value) {
             <span>50/50 Shirt — $24</span>
           </div>
 
-          <button
-            type="button"
-            className="button preorderButton"
+    <button
+  type="button"
+  className="button preorderButton"
+  onClick={() => {
+    setSelectedPreorderProduct(product);
+
+    setTimeout(() => {
+      document
+        .getElementById("preorder-order-form")
+        ?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+    }, 50);
+  }}
+>
+  Select This Shirt
+</button>
           >
             Select This Shirt
           </button>
