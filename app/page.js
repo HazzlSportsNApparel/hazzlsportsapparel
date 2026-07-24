@@ -165,7 +165,20 @@ export default function Home() {
   { product: "", quantity: "" },
   { product: "", quantity: "" },
 ]);
+const [selectedPreorderProduct, setSelectedPreorderProduct] =
+  useState(null);
 
+const [preorderForm, setPreorderForm] = useState({
+  material: "Interlock DriFit",
+  size: "Adult M",
+  quantity: 1,
+  fulfillment: "Customer Pickup",
+  customerName: "",
+  phone: "",
+  email: "",
+  shippingAddress: "",
+  notes: "",
+});
 function addProduct() {
   setProducts((currentProducts) => [
     ...currentProducts,
