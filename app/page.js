@@ -408,9 +408,8 @@ function updateProduct(indexToUpdate, field, value) {
     }, 50);
   }}
 >
-  Select This Shirt
-</button>
-          >
+ 
+   
             Select This Shirt
           </button>
         </div>
