@@ -339,7 +339,63 @@ function updateProduct(indexToUpdate, field, value) {
     ))}
   </div>
 </section>
+<section className="preorderSection" id="preorder-store">
+  <div className="sectionHeading">
+    <p className="eyebrow">Limited-time preorder</p>
+    <h2>Panther and Prowler Fan Shirts</h2>
+    <p>
+      Orders open July 27, 2026 and close August 5, 2026.
+      Expected pickup or delivery is August 14, 2026.
+    </p>
+  </div>
 
+  <div className="preorderNotice">
+    <strong>Order deadline:</strong> August 5, 2026
+    <span>
+      Sizes Youth XS through Adult 4XL. Pickup and shipping
+      are available.
+    </span>
+  </div>
+
+  <div className="preorderGrid">
+    {preorderProducts.map((product) => (
+      <article className="preorderCard" key={product.id}>
+        <img
+          src={`/images/${product.image}`}
+          alt={product.name}
+          loading="lazy"
+        />
+
+        <div className="preorderCardText">
+          <h3>{product.name}</h3>
+
+          <p className="preorderColor">
+            Shirt color: {product.shirtColor}
+          </p>
+
+          <div className="preorderPrices">
+            <span>Interlock DriFit — $25</span>
+            <span>3 Tuck Mesh — $25</span>
+            <span>50/50 Shirt — $24</span>
+          </div>
+
+          <button
+            type="button"
+            className="button preorderButton"
+          >
+            Select This Shirt
+          </button>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <p className="preorderFinePrint">
+    Product images are mockups. Final colors, sizing, and print
+    placement may vary slightly. Orders are produced after the
+    preorder closes.
+  </p>
+</section>
       <section className="builderSection" id="uniform-builder">
         <div>
           <p className="eyebrow">Custom quote request</p>
