@@ -39,7 +39,92 @@ const shoutouts = [
   ],
 ];
 
+const preorderProducts = [
+  {
+    id: "panthers-black-vertical",
+    name: "Black Panthers Vertical Shirt",
+    image: "panthers-black-vertical.jpg",
+    shirtColor: "Black",
+  },
+  {
+    id: "prowlers-btbagb",
+    name: "Prowlers BTBAGB 1% Shirt",
+    image: "prowlers-btbagb.jpg",
+    shirtColor: "White",
+  },
+  {
+    id: "prowlers-fight",
+    name: "Prowlers Fight Shirt",
+    image: "prowlers-fight.jpg",
+    shirtColor: "White",
+  },
+  {
+    id: "prowlers-white-vertical",
+    name: "White Prowlers Vertical Shirt",
+    image: "prowlers-white-vertical.jpg",
+    shirtColor: "White",
+  },
+  {
+    id: "class-2027-black-senior",
+    name: "Black Class of 2027 Senior Shirt",
+    image: "class-2027-black-senior.jpg",
+    shirtColor: "Black",
+  },
+  {
+    id: "panthers-white-vertical",
+    name: "White Panthers Vertical Shirt",
+    image: "panthers-white-vertical.jpg",
+    shirtColor: "White",
+  },
+  {
+    id: "panthers-white-retro",
+    name: "White Retro Panthers Shirt",
+    image: "panthers-white-retro.jpg",
+    shirtColor: "White",
+  },
+  {
+    id: "panthers-white-paw",
+    name: "White Panthers Paw Shirt",
+    image: "panthers-white-paw.jpg",
+    shirtColor: "White",
+  },
+  {
+    id: "class-2027-white-senior",
+    name: "White Class of 2027 Senior Shirt",
+    image: "class-2027-white-senior.jpg",
+    shirtColor: "White",
+  },
+];
 
+const preorderMaterials = [
+  {
+    name: "Interlock DriFit",
+    price: 25,
+  },
+  {
+    name: "3 Tuck Mesh",
+    price: 25,
+  },
+  {
+    name: "50/50 Shirt",
+    price: 24,
+  },
+];
+
+const preorderSizes = [
+  "Youth XS",
+  "Youth S",
+  "Youth M",
+  "Youth L",
+  "Youth XL",
+  "Adult S",
+  "Adult M",
+  "Adult L",
+  "Adult XL",
+  "Adult 2XL",
+  "Adult 3XL",
+  "Adult 4XL",
+];
 const productOptions = [
   "Crew Neck Jersey",
   "V-Neck Jersey",
