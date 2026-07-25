@@ -416,7 +416,193 @@ function updateProduct(indexToUpdate, field, value) {
       </article>
     ))}
   </div>
+{selectedPreorderProduct && (
+  <div
+    className="preorderOrderForm"
+    id="preorder-order-form"
+  >
+    <div className="preorderSelectedProduct">
+      <img
+        src={`/images/${selectedPreorderProduct.image}`}
+        alt={selectedPreorderProduct.name}
+      />
 
+      <div>
+        <p className="eyebrow">Selected shirt</p>
+        <h3>{selectedPreorderProduct.name}</h3>
+        <p>
+          Shirt color:{" "}
+          {selectedPreorderProduct.shirtColor}
+        </p>
+      </div>
+    </div>
+
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+      }}
+    >
+      <label>
+        Material
+        <select
+          value={preorderForm.material}
+          onChange={(event) =>
+            setPreorderForm({
+              ...preorderForm,
+              material: event.target.value,
+            })
+          }
+        >
+          {preorderMaterials.map((material) => (
+            <option
+              key={material.name}
+              value={material.name}
+            >
+              {material.name} — ${material.price}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label>
+        Size
+        <select
+          value={preorderForm.size}
+          onChange={(event) =>
+            setPreorderForm({
+              ...preorderForm,
+              size: event.target.value,
+            })
+          }
+        >
+          {preorderSizes.map((size) => (
+            <option key={size} value={size}>
+              {size}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label>
+        Quantity
+        <input
+          type="number"
+          min="1"
+          max="25"
+          value={preorderForm.quantity}
+          onChange={(event) =>
+            setPreorderForm({
+              ...preorderForm,
+              quantity: event.target.value,
+            })
+          }
+        />
+      </label>
+
+      <label>
+        Pickup or Shipping
+        <select
+          value={preorderForm.fulfillment}
+          onChange={(event) =>
+            setPreorderForm({
+              ...preorderForm,
+              fulfillment: event.target.value,
+            })
+          }
+        >
+          <option value="Customer Pickup">
+            Customer Pickup
+          </option>
+          <option value="Shipping">
+            Shipping
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Customer Name
+        <input
+          type="text"
+          required
+          value={preorderForm.customerName}
+          onChange={(event) =>
+            setPreorderForm({
+              ...preorderForm,
+              customerName: event.target.value,
+            })
+          }
+        />
+      </label>
+
+      <label>
+        Phone Number
+        <input
+          type="tel"
+          required
+          value={preorderForm.phone}
+          onChange={(event) =>
+            setPreorderForm({
+              ...preorderForm,
+              phone: event.target.value,
+            })
+          }
+        />
+      </label>
+
+      <label>
+        Email
+        <input
+          type="email"
+          required
+          value={preorderForm.email}
+          onChange={(event) =>
+            setPreorderForm({
+              ...preorderForm,
+              email: event.target.value,
+            })
+          }
+        />
+      </label>
+
+      {preorderForm.fulfillment === "Shipping" && (
+        <label className="preorderFullWidth">
+          Shipping Address
+          <textarea
+            required
+            value={preorderForm.shippingAddress}
+            onChange={(event) =>
+              setPreorderForm({
+                ...preorderForm,
+                shippingAddress: event.target.value,
+              })
+            }
+          />
+        </label>
+      )}
+
+      <label className="preorderFullWidth">
+        Order Notes
+        <textarea
+          value={preorderForm.notes}
+          onChange={(event) =>
+            setPreorderForm({
+              ...preorderForm,
+              notes: event.target.value,
+            })
+          }
+          placeholder="Add any important information here."
+        />
+      </label>
+
+      <button
+        type="submit"
+        className="button preorderSubmitButton"
+      >
+        Continue Preorder
+      </button>
+    </form>
+  </div>
+)}
   <p className="preorderFinePrint">
     Product images are mockups. Final colors, sizing, and print
     placement may vary slightly. Orders are produced after the
