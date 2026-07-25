@@ -167,6 +167,7 @@ export default function Home() {
 ]);
 const [selectedPreorderProduct, setSelectedPreorderProduct] =
   useState(null);
+  const [isPreorderLoading, setIsPreorderLoading] = useState(false);
 
 const [preorderForm, setPreorderForm] = useState({
   material: "Interlock DriFit",
@@ -234,11 +235,16 @@ function updateProduct(indexToUpdate, field, value) {
 }
   async function handlePreorderSubmit(event) {
   event.preventDefault();
+      if (isPreorderLoading) {
+    return;
+  }
 
   if (!selectedPreorderProduct) {
     alert("Please select a shirt first.");
     return;
   }
+      
+      setIsPreorderLoading(true);
 
   try {
     const checkoutResponse = await fetch(
@@ -343,6 +349,7 @@ function updateProduct(indexToUpdate, field, value) {
       error.message ||
         "The preorder checkout could not be started."
     );
+    setIsPreorderLoading(false);
   }
 }
   return (
