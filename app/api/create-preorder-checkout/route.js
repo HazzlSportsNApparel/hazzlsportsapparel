@@ -152,7 +152,7 @@ export async function POST(request) {
 
           pre_populated_data: {
             buyer_email: email,
-            buyer_phone_number: phone,
+            
           },
         }),
       }
