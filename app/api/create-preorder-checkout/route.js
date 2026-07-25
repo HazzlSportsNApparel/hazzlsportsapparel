@@ -179,6 +179,8 @@ export async function POST(request) {
 
     const checkoutUrl =
       squareData?.payment_link?.url;
+    const squareOrderId =
+  squareData?.payment_link?.order_id;
 
     if (!checkoutUrl) {
       return NextResponse.json(
@@ -194,6 +196,7 @@ export async function POST(request) {
     return NextResponse.json({
       success: true,
       checkoutUrl,
+      squareOrderId,
       priceEach,
       shipping,
       total: totalDollars,
