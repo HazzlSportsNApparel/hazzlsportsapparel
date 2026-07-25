@@ -287,6 +287,10 @@ function updateProduct(indexToUpdate, field, value) {
 
     formData.append("formType", "preorder");
     formData.append(
+  "squareOrderId",
+  checkoutData.squareOrderId
+);
+    formData.append(
       "preorderCustomerName",
       preorderForm.customerName
     );
