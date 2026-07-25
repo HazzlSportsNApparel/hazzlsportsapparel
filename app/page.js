@@ -232,6 +232,35 @@ function updateProduct(indexToUpdate, field, value) {
     setSubmitted(false);
   }
 }
+  async function handlePreorderSubmit(event) {
+  event.preventDefault();
+
+  if (!selectedPreorderProduct) {
+    alert("Please select a shirt first.");
+    return;
+  }
+
+  const formData = new FormData();
+
+  formData.append("formType", "preorder");
+  formData.append(
+    "preorderCustomerName",
+    preorderForm.customerName
+  );
+  formData.append(
+    "preorderPhone",
+    preorderForm.phone
+  );
+  formData.append(
+    "preorderEmail",
+    preorderForm.email
+  );
+  formData.append(
+    "preorderProductName",
+    selectedPreorderProduct.name
+  );
+  formData.append(
+   
   return (
     <main>
       <div className="announcement">
@@ -437,11 +466,7 @@ function updateProduct(indexToUpdate, field, value) {
       </div>
     </div>
 
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-      }}
-    >
+    <form onSubmit={handlePreorderSubmit}>
       <label>
         Material
         <select
