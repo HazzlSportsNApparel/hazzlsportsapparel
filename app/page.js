@@ -707,7 +707,7 @@ function updateProduct(indexToUpdate, field, value) {
         type="submit"
         className="button preorderSubmitButton"
       >
-        Continue Preorder
+       Continue to Secure Payment
       </button>
     </form>
   </div>
