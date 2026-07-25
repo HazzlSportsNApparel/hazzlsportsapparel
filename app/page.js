@@ -232,7 +232,7 @@ function updateProduct(indexToUpdate, field, value) {
     setSubmitted(false);
   }
 }
-  async function handlePreorderSubmit(event) {
+   async function handlePreorderSubmit(event) {
   event.preventDefault();
 
   if (!selectedPreorderProduct) {
@@ -260,7 +260,69 @@ function updateProduct(indexToUpdate, field, value) {
     selectedPreorderProduct.name
   );
   formData.append(
-   
+    "preorderShirtColor",
+    selectedPreorderProduct.shirtColor
+  );
+  formData.append(
+    "preorderMaterial",
+    preorderForm.material
+  );
+  formData.append(
+    "preorderSize",
+    preorderForm.size
+  );
+  formData.append(
+    "preorderQuantity",
+    preorderForm.quantity
+  );
+  formData.append(
+    "preorderFulfillment",
+    preorderForm.fulfillment
+  );
+  formData.append(
+    "preorderShippingAddress",
+    preorderForm.shippingAddress
+  );
+  formData.append(
+    "preorderNotes",
+    preorderForm.notes
+  );
+
+  try {
+    await fetch(QUOTE_FORM_URL, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors",
+    });
+
+    alert(
+      "Your preorder was submitted successfully. We will contact you with payment and pickup or shipping information."
+    );
+
+    setSelectedPreorderProduct(null);
+
+    setPreorderForm({
+      material: "Interlock DriFit",
+      size: "Adult M",
+      quantity: 1,
+      fulfillment: "Customer Pickup",
+      customerName: "",
+      phone: "",
+      email: "",
+      shippingAddress: "",
+      notes: "",
+    });
+  } catch (error) {
+    console.error(
+      "Preorder submission failed:",
+      error
+    );
+
+    alert(
+      "The preorder could not be submitted. Please try again."
+    );
+  }
+}
   return (
     <main>
       <div className="announcement">
