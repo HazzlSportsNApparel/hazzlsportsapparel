@@ -232,7 +232,7 @@ function updateProduct(indexToUpdate, field, value) {
     setSubmitted(false);
   }
 }
-   async function handlePreorderSubmit(event) {
+  async function handlePreorderSubmit(event) {
   event.preventDefault();
 
   if (!selectedPreorderProduct) {
@@ -240,86 +240,108 @@ function updateProduct(indexToUpdate, field, value) {
     return;
   }
 
-  const formData = new FormData();
-
-  formData.append("formType", "preorder");
-  formData.append(
-    "preorderCustomerName",
-    preorderForm.customerName
-  );
-  formData.append(
-    "preorderPhone",
-    preorderForm.phone
-  );
-  formData.append(
-    "preorderEmail",
-    preorderForm.email
-  );
-  formData.append(
-    "preorderProductName",
-    selectedPreorderProduct.name
-  );
-  formData.append(
-    "preorderShirtColor",
-    selectedPreorderProduct.shirtColor
-  );
-  formData.append(
-    "preorderMaterial",
-    preorderForm.material
-  );
-  formData.append(
-    "preorderSize",
-    preorderForm.size
-  );
-  formData.append(
-    "preorderQuantity",
-    preorderForm.quantity
-  );
-  formData.append(
-    "preorderFulfillment",
-    preorderForm.fulfillment
-  );
-  formData.append(
-    "preorderShippingAddress",
-    preorderForm.shippingAddress
-  );
-  formData.append(
-    "preorderNotes",
-    preorderForm.notes
-  );
-
   try {
+    const checkoutResponse = await fetch(
+      "/api/create-preorder-checkout",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productName: selectedPreorderProduct.name,
+          shirtColor:
+            selectedPreorderProduct.shirtColor,
+          material: preorderForm.material,
+          size: preorderForm.size,
+          quantity: Number(preorderForm.quantity),
+          fulfillment: preorderForm.fulfillment,
+          customerName: preorderForm.customerName,
+          phone: preorderForm.phone,
+          email: preorderForm.email,
+        }),
+      }
+    );
+
+    const checkoutData =
+      await checkoutResponse.json();
+
+    if (
+      !checkoutResponse.ok ||
+      !checkoutData.success ||
+      !checkoutData.checkoutUrl
+    ) {
+      throw new Error(
+        checkoutData.message ||
+          "Square checkout could not be created."
+      );
+    }
+
+    const formData = new FormData();
+
+    formData.append("formType", "preorder");
+    formData.append(
+      "preorderCustomerName",
+      preorderForm.customerName
+    );
+    formData.append(
+      "preorderPhone",
+      preorderForm.phone
+    );
+    formData.append(
+      "preorderEmail",
+      preorderForm.email
+    );
+    formData.append(
+      "preorderProductName",
+      selectedPreorderProduct.name
+    );
+    formData.append(
+      "preorderShirtColor",
+      selectedPreorderProduct.shirtColor
+    );
+    formData.append(
+      "preorderMaterial",
+      preorderForm.material
+    );
+    formData.append(
+      "preorderSize",
+      preorderForm.size
+    );
+    formData.append(
+      "preorderQuantity",
+      preorderForm.quantity
+    );
+    formData.append(
+      "preorderFulfillment",
+      preorderForm.fulfillment
+    );
+    formData.append(
+      "preorderShippingAddress",
+      preorderForm.shippingAddress
+    );
+    formData.append(
+      "preorderNotes",
+      preorderForm.notes
+    );
+
     await fetch(QUOTE_FORM_URL, {
       method: "POST",
       body: formData,
       mode: "no-cors",
     });
 
-    alert(
-      "Your preorder was submitted successfully. We will contact you with payment and pickup or shipping information."
-    );
-
-    setSelectedPreorderProduct(null);
-
-    setPreorderForm({
-      material: "Interlock DriFit",
-      size: "Adult M",
-      quantity: 1,
-      fulfillment: "Customer Pickup",
-      customerName: "",
-      phone: "",
-      email: "",
-      shippingAddress: "",
-      notes: "",
-    });
+    window.location.href =
+      checkoutData.checkoutUrl;
   } catch (error) {
     console.error(
-      "Preorder submission failed:",
+      "Preorder checkout failed:",
       error
     );
 
     alert(
-      "The preorder could not be submitted. Please try again."
+      error.message ||
+        "The preorder checkout could not be started."
     );
   }
 }
