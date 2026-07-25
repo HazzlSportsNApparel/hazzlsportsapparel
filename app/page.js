@@ -711,11 +711,14 @@ function updateProduct(indexToUpdate, field, value) {
       </label>
 
       <button
-        type="submit"
-        className="button preorderSubmitButton"
-      >
-       Continue to Secure Payment
-      </button>
+  type="submit"
+  className="button preorderSubmitButton"
+  disabled={isPreorderLoading}
+>
+  {isPreorderLoading
+    ? "Opening Secure Checkout..."
+    : "Continue to Secure Payment"}
+</button>
     </form>
   </div>
 )}
