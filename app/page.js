@@ -107,7 +107,17 @@ const preorderMaterials = [
   },
   {
     name: "50/50 Shirt",
-    price: 24,
+    price: 25,
+  },
+];
+const preorderSleeves = [
+  {
+    name: "Short Sleeve",
+    price: 0,
+  },
+  {
+    name: "Long Sleeve",
+    price: 3,
   },
 ];
 
@@ -171,6 +181,7 @@ const [selectedPreorderProduct, setSelectedPreorderProduct] =
 
 const [preorderForm, setPreorderForm] = useState({
   material: "Interlock DriFit",
+  sleeve: "Short Sleeve",
   size: "Adult M",
   quantity: 1,
   fulfillment: "Customer Pickup",
@@ -259,6 +270,7 @@ function updateProduct(indexToUpdate, field, value) {
           shirtColor:
             selectedPreorderProduct.shirtColor,
           material: preorderForm.material,
+          sleeve: preorderForm.sleeve,
           size: preorderForm.size,
           quantity: Number(preorderForm.quantity),
           fulfillment: preorderForm.fulfillment,
@@ -314,6 +326,10 @@ function updateProduct(indexToUpdate, field, value) {
       "preorderMaterial",
       preorderForm.material
     );
+    formData.append(
+  "preorderSleeve",
+  preorderForm.sleeve
+);
     formData.append(
       "preorderSize",
       preorderForm.size
@@ -583,7 +599,30 @@ function updateProduct(indexToUpdate, field, value) {
           ))}
         </select>
       </label>
-
+<label>
+  Sleeve Length
+  <select
+    value={preorderForm.sleeve}
+    onChange={(event) =>
+      setPreorderForm({
+        ...preorderForm,
+        sleeve: event.target.value,
+      })
+    }
+  >
+    {preorderSleeves.map((sleeve) => (
+      <option
+        key={sleeve.name}
+        value={sleeve.name}
+      >
+        {sleeve.name}
+        {sleeve.price > 0
+          ? ` +$${sleeve.price}`
+          : ""}
+      </option>
+    ))}
+  </select>
+</label>
       <label>
         Size
         <select
