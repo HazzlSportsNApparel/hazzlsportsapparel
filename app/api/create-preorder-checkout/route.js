@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 const MATERIAL_PRICES = {
   "Interlock DriFit": 25,
   "3 Tuck Mesh": 25,
-  "50/50 Shirt": 24,
+  "50/50 Shirt": 25,
 };
 
 const SHIPPING_PRICE = 5;
@@ -39,7 +39,7 @@ export async function POST(request) {
     const material = String(
       data.material || ""
     ).trim();
-
+const sleeve = String(data.sleeve || "Short Sleeve").trim();
     const size = String(data.size || "").trim();
 
     const fulfillment = String(
@@ -87,7 +87,13 @@ export async function POST(request) {
       );
     }
 
-    const priceEach = MATERIAL_PRICES[material];
+    const basePrice = MATERIAL_PRICES[material];
+
+const sleevePrice =
+  sleeve === "Long Sleeve" ? 3 : 0;
+
+const priceEach =
+  basePrice + sleevePrice;
 
     if (!priceEach) {
       return NextResponse.json(
@@ -114,8 +120,9 @@ export async function POST(request) {
     const checkoutName = [
       productName,
       shirtColor,
-      material,
-      size,
+     material,
+sleeve,
+size,
       `Qty ${quantity}`,
       shipping
         ? "Includes $5 shipping"
