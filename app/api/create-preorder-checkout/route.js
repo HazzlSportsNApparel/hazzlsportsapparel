@@ -40,6 +40,17 @@ export async function POST(request) {
       data.material || ""
     ).trim();
 const sleeve = String(data.sleeve || "Short Sleeve").trim();
+    const customization = String(
+  data.customization || "No Customization"
+).trim();
+
+const backName = String(
+  data.backName || ""
+).trim();
+
+const backNumber = String(
+  data.backNumber || ""
+).trim();
     const size = String(data.size || "").trim();
 
     const fulfillment = String(
@@ -92,9 +103,13 @@ const sleeve = String(data.sleeve || "Short Sleeve").trim();
 const sleevePrice =
   sleeve === "Long Sleeve" ? 3 : 0;
 
-const priceEach =
-  basePrice + sleevePrice;
+const customizationPrice =
+  customization === "No Customization" ? 0 : 2;
 
+const priceEach =
+  basePrice +
+  sleevePrice +
+  customizationPrice;
     if (!priceEach) {
       return NextResponse.json(
         {
@@ -122,6 +137,9 @@ const priceEach =
       shirtColor,
      material,
 sleeve,
+      customization,
+backName ? `Name: ${backName}` : "",
+backNumber ? `Number: ${backNumber}` : "",
 size,
       `Qty ${quantity}`,
       shipping
