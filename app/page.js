@@ -120,7 +120,16 @@ const preorderSleeves = [
     price: 3,
   },
 ];
-
+const preorderCustomizations = [
+  {
+    name: "No Customization",
+    price: 0,
+  },
+  {
+    name: "Name and/or Number on Back",
+    price: 2,
+  },
+];
 const preorderSizes = [
   "Youth XS",
   "Youth S",
@@ -182,6 +191,9 @@ const [selectedPreorderProduct, setSelectedPreorderProduct] =
 const [preorderForm, setPreorderForm] = useState({
   material: "Interlock DriFit",
   sleeve: "Short Sleeve",
+  customization: "No Customization",
+backName: "",
+backNumber: "",
   size: "Adult M",
   quantity: 1,
   fulfillment: "Customer Pickup",
@@ -271,6 +283,9 @@ function updateProduct(indexToUpdate, field, value) {
             selectedPreorderProduct.shirtColor,
           material: preorderForm.material,
           sleeve: preorderForm.sleeve,
+          customization: preorderForm.customization,
+backName: preorderForm.backName,
+backNumber: preorderForm.backNumber,
           size: preorderForm.size,
           quantity: Number(preorderForm.quantity),
           fulfillment: preorderForm.fulfillment,
@@ -329,6 +344,20 @@ function updateProduct(indexToUpdate, field, value) {
     formData.append(
   "preorderSleeve",
   preorderForm.sleeve
+);
+    formData.append(
+  "preorderCustomization",
+  preorderForm.customization
+);
+
+formData.append(
+  "preorderBackName",
+  preorderForm.backName
+);
+
+formData.append(
+  "preorderBackNumber",
+  preorderForm.backNumber
 );
     formData.append(
       "preorderSize",
@@ -623,6 +652,73 @@ function updateProduct(indexToUpdate, field, value) {
     ))}
   </select>
 </label>
+    <label>
+  Back Customization
+  <select
+    value={preorderForm.customization}
+    onChange={(event) =>
+      setPreorderForm({
+        ...preorderForm,
+        customization: event.target.value,
+        backName:
+          event.target.value === "No Customization"
+            ? ""
+            : preorderForm.backName,
+        backNumber:
+          event.target.value === "No Customization"
+            ? ""
+            : preorderForm.backNumber,
+      })
+    }
+  >
+    {preorderCustomizations.map((option) => (
+      <option
+        key={option.name}
+        value={option.name}
+      >
+        {option.name}
+        {option.price > 0
+          ? ` +$${option.price} per shirt`
+          : ""}
+      </option>
+    ))}
+  </select>
+</label>
+
+{preorderForm.customization !==
+  "No Customization" && (
+  <>
+    <label>
+      Name on Back
+      <input
+        type="text"
+        value={preorderForm.backName}
+        onChange={(event) =>
+          setPreorderForm({
+            ...preorderForm,
+            backName: event.target.value,
+          })
+        }
+        placeholder="Enter name, if wanted"
+      />
+    </label>
+
+    <label>
+      Number on Back
+      <input
+        type="text"
+        value={preorderForm.backNumber}
+        onChange={(event) =>
+          setPreorderForm({
+            ...preorderForm,
+            backNumber: event.target.value,
+          })
+        }
+        placeholder="Enter number, if wanted"
+      />
+    </label>
+  </>
+)}
       <label>
         Size
         <select
