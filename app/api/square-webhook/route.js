@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import { after } from "next/server";
 
 export const runtime = "nodejs";
 
@@ -94,6 +95,8 @@ export async function POST(request) {
       "Paid"
     );
 
+    after(async () => {
+  try {
     const appsScriptResponse = await fetch(
       appsScriptUrl,
       {
@@ -104,14 +107,22 @@ export async function POST(request) {
     );
 
     if (!appsScriptResponse.ok) {
-      throw new Error(
-        "Apps Script payment update failed."
+      console.error(
+        "Apps Script payment update failed:",
+        appsScriptResponse.status
       );
     }
+  } catch (error) {
+    console.error(
+      "Background payment update failed:",
+      error
+    );
+  }
+});
 
-    return Response.json({
-      success: true,
-    });
+return Response.json({
+  success: true,
+});
   } catch (error) {
     console.error("Square webhook error:", error);
 
