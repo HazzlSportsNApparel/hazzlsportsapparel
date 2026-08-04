@@ -27,7 +27,9 @@ export async function POST(request) {
     }
 
     const data = await request.json();
-
+const extraItems = Array.isArray(data.extraItems)
+  ? data.extraItems
+  : [];
     const productName = String(
       data.productName || ""
     ).trim();
@@ -119,35 +121,139 @@ const priceEach =
         { status: 400 }
       );
     }
+let extraItemsTotal = 0;
+const extraItemDescriptions = [];
 
+for (const item of extraItems) {
+  const extraProductName = String(
+    item.productName || ""
+  ).trim();
+
+  const extraShirtColor = String(
+    item.shirtColor || ""
+  ).trim();
+
+  const extraMaterial = String(
+    item.material || ""
+  ).trim();
+
+  const extraSleeve = String(
+    item.sleeve || "Short Sleeve"
+  ).trim();
+
+  const extraCustomization = String(
+    item.customization || "No Customization"
+  ).trim();
+
+  const extraBackName = String(
+    item.backName || ""
+  ).trim();
+
+  const extraBackNumber = String(
+    item.backNumber || ""
+  ).trim();
+
+  const extraSize = String(
+    item.size || ""
+  ).trim();
+
+  const extraQuantity = Number(
+    item.quantity || 0
+  );
+
+  const extraBasePrice =
+    MATERIAL_PRICES[extraMaterial];
+
+  if (
+    !extraProductName ||
+    !extraBasePrice ||
+    !extraSize ||
+    extraQuantity < 1 ||
+    extraQuantity > 25
+  ) {
+    return NextResponse.json(
+      {
+        success: false,
+        message:
+          "One of the additional shirts is missing required information.",
+      },
+      { status: 400 }
+    );
+  }
+
+  const extraSleevePrice =
+    extraSleeve === "Long Sleeve" ? 3 : 0;
+
+  const extraCustomizationPrice =
+    extraCustomization === "No Customization"
+      ? 0
+      : 2;
+
+  const extraPriceEach =
+    extraBasePrice +
+    extraSleevePrice +
+    extraCustomizationPrice;
+
+  extraItemsTotal +=
+    extraPriceEach * extraQuantity;
+
+  extraItemDescriptions.push(
+    [
+      extraProductName,
+      extraShirtColor,
+      extraMaterial,
+      extraSleeve,
+      extraCustomization,
+      extraBackName
+        ? `Name: ${extraBackName}`
+        : "",
+      extraBackNumber
+        ? `Number: ${extraBackNumber}`
+        : "",
+      extraSize,
+      `Qty ${extraQuantity}`,
+    ]
+      .filter(Boolean)
+      .join(" • ")
+  );
+}
     const shipping =
       fulfillment === "Shipping"
         ? SHIPPING_PRICE
         : 0;
 
     const totalDollars =
-      priceEach * quantity + shipping;
+  priceEach * quantity +
+  extraItemsTotal +
+  shipping;
 
     const totalCents = Math.round(
       totalDollars * 100
     );
 
-    const checkoutName = [
-      productName,
-      shirtColor,
-     material,
-sleeve,
-      customization,
-backName ? `Name: ${backName}` : "",
-backNumber ? `Number: ${backNumber}` : "",
-size,
-      `Qty ${quantity}`,
-      shipping
-        ? "Includes $5 shipping"
-        : "Customer pickup",
-    ]
-      .filter(Boolean)
-      .join(" • ");
+   const checkoutName = [
+  [
+    productName,
+    shirtColor,
+    material,
+    sleeve,
+    customization,
+    backName ? `Name: ${backName}` : "",
+    backNumber ? `Number: ${backNumber}` : "",
+    size,
+    `Qty ${quantity}`,
+  ]
+    .filter(Boolean)
+    .join(" • "),
+
+  ...extraItemDescriptions,
+
+  shipping
+    ? "Includes $5 shipping"
+    : "Customer pickup",
+]
+  .filter(Boolean)
+  .join(" || ");
 
     const squareResponse = await fetch(
       "https://connect.squareup.com/v2/online-checkout/payment-links",
