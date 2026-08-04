@@ -288,6 +288,7 @@ backName: preorderForm.backName,
 backNumber: preorderForm.backNumber,
           size: preorderForm.size,
           quantity: Number(preorderForm.quantity),
+          extraItems: preorderExtraItems,
           fulfillment: preorderForm.fulfillment,
           customerName: preorderForm.customerName,
           phone: preorderForm.phone,
@@ -358,6 +359,10 @@ formData.append(
 formData.append(
   "preorderBackNumber",
   preorderForm.backNumber
+);
+    formData.append(
+  "preorderExtraItems",
+  JSON.stringify(preorderExtraItems)
 );
     formData.append(
       "preorderSize",
@@ -753,7 +758,221 @@ formData.append(
           }
         />
       </label>
+<div className="preorderExtraItems">
+  {preorderExtraItems.map((item, index) => (
+    <div
+      key={index}
+      className="preorderExtraItem"
+    >
+      <h3>Additional Shirt {index + 2}</h3>
+<label>
+  Shirt
+  <select
+    value={item.productName}
+    onChange={(event) => {
+      const selectedProduct =
+        preorderProducts.find(
+          (product) =>
+            product.name === event.target.value
+        );
 
+      const updated = [...preorderExtraItems];
+
+      updated[index].productName =
+        selectedProduct?.name || "";
+
+      updated[index].shirtColor =
+        selectedProduct?.shirtColor || "";
+
+      setPreorderExtraItems(updated);
+    }}
+  >
+    <option value="">Select a shirt</option>
+
+    {preorderProducts.map((product) => (
+      <option
+        key={product.name}
+        value={product.name}
+      >
+        {product.name}
+      </option>
+    ))}
+  </select>
+</label>
+      <label>
+        Material
+        <select
+          value={item.material}
+          onChange={(event) => {
+            const updated = [...preorderExtraItems];
+            updated[index].material = event.target.value;
+            setPreorderExtraItems(updated);
+          }}
+        >
+          {preorderMaterials.map((material) => (
+            <option
+              key={material.name}
+              value={material.name}
+            >
+              {material.name}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label>
+        Sleeve Length
+        <select
+          value={item.sleeve}
+          onChange={(event) => {
+            const updated = [...preorderExtraItems];
+            updated[index].sleeve = event.target.value;
+            setPreorderExtraItems(updated);
+          }}
+        >
+          {preorderSleeves.map((sleeve) => (
+            <option
+              key={sleeve.name}
+              value={sleeve.name}
+            >
+              {sleeve.name}
+              {sleeve.price > 0
+                ? ` +$${sleeve.price}`
+                : ""}
+            </option>
+          ))}
+        </select>
+      </label>
+<label>
+  Back Customization
+  <select
+    value={item.customization}
+    onChange={(event) => {
+      const updated = [...preorderExtraItems];
+
+      updated[index].customization =
+        event.target.value;
+
+      if (
+        event.target.value === "No Customization"
+      ) {
+        updated[index].backName = "";
+        updated[index].backNumber = "";
+      }
+
+      setPreorderExtraItems(updated);
+    }}
+  >
+    {preorderCustomizations.map((option) => (
+      <option
+        key={option.name}
+        value={option.name}
+      >
+        {option.name}
+        {option.price > 0
+          ? ` +$${option.price} per shirt`
+          : ""}
+      </option>
+    ))}
+  </select>
+</label>
+
+{item.customization !== "No Customization" && (
+  <>
+    <label>
+      Name on Back
+      <input
+        type="text"
+        value={item.backName}
+        onChange={(event) => {
+          const updated = [...preorderExtraItems];
+          updated[index].backName =
+            event.target.value;
+          setPreorderExtraItems(updated);
+        }}
+        placeholder="Enter name, if wanted"
+      />
+    </label>
+
+    <label>
+      Number on Back
+      <input
+        type="text"
+        value={item.backNumber}
+        onChange={(event) => {
+          const updated = [...preorderExtraItems];
+          updated[index].backNumber =
+            event.target.value;
+          setPreorderExtraItems(updated);
+        }}
+        placeholder="Enter number, if wanted"
+      />
+    </label>
+  </>
+)}
+      <label>
+        Size
+        <select
+          value={item.size}
+          onChange={(event) => {
+            const updated = [...preorderExtraItems];
+            updated[index].size = event.target.value;
+            setPreorderExtraItems(updated);
+          }}
+        >
+          {preorderSizes.map((size) => (
+            <option
+              key={size}
+              value={size}
+            >
+              {size}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label>
+        Quantity
+        <input
+          type="number"
+          min="1"
+          value={item.quantity}
+          onChange={(event) => {
+            const updated = [...preorderExtraItems];
+            updated[index].quantity =
+              Number(event.target.value);
+            setPreorderExtraItems(updated);
+          }}
+        />
+      </label>
+
+      <button
+        type="button"
+        onClick={() =>
+          setPreorderExtraItems(
+            preorderExtraItems.filter(
+              (_, itemIndex) => itemIndex !== index
+            )
+          )
+        }
+      >
+        Remove This Shirt
+      </button>
+    </div>
+  ))}
+
+  <button
+    type="button"
+    onClick={() =>
+      setPreorderExtraItems([
+        ...preorderExtraItems,
+        createPreorderExtraItem(),
+      ])
+    }
+  >
+    + Add Another Shirt
+  </button>
+</div>
       <label>
         Pickup or Shipping
         <select
