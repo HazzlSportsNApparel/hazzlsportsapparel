@@ -203,6 +203,19 @@ backNumber: "",
   shippingAddress: "",
   notes: "",
 });
+  const [preorderExtraItems, setPreorderExtraItems] = useState([]);
+
+const createPreorderExtraItem = () => ({
+  productName: "",
+  shirtColor: "",
+  material: "Interlock DriFit",
+  sleeve: "Short Sleeve",
+  customization: "No Customization",
+  backName: "",
+  backNumber: "",
+  size: "Adult M",
+  quantity: 1,
+});
 function addProduct() {
   setProducts((currentProducts) => [
     ...currentProducts,
