@@ -230,30 +230,19 @@ for (const item of extraItems) {
     const totalCents = Math.round(
       totalDollars * 100
     );
+const totalShirts =
+  quantity +
+  extraItems.reduce(
+    (sum, item) =>
+      sum + Number(item.quantity || 0),
+    0
+  );
 
-   const checkoutName = [
-  [
-    productName,
-    shirtColor,
-    material,
-    sleeve,
-    customization,
-    backName ? `Name: ${backName}` : "",
-    backNumber ? `Number: ${backNumber}` : "",
-    size,
-    `Qty ${quantity}`,
-  ]
-    .filter(Boolean)
-    .join(" • "),
-
-  ...extraItemDescriptions,
-
-  shipping
-    ? "Includes $5 shipping"
-    : "Customer pickup",
-]
-  .filter(Boolean)
-  .join(" || ");
+const checkoutName =
+  `HĀZZL Shirt Preorder - ${totalShirts} Shirt${
+    totalShirts === 1 ? "" : "s"
+  }`;
+    
 
     const squareResponse = await fetch(
       "https://connect.squareup.com/v2/online-checkout/payment-links",
