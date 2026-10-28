@@ -185,7 +185,9 @@ h2 {
   background: #f3f0e8;
   color: #0a0a0a;
 }
-
+.section .sectionHeading > p {
+  color: #444;
+}
 .section .eyebrow {
   color: #8b681d;
 }
