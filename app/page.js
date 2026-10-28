@@ -433,6 +433,7 @@ formData.append(
 
         <nav className="nav" aria-label="Main navigation">
           <a href="#collections">Collections</a>
+    <a href="/preorders">School Preorders</a>
           <a href="#work">Our Work</a>
           <a href="#uniform-builder">Custom Uniforms</a>
           <a href="#contact">Contact</a>
