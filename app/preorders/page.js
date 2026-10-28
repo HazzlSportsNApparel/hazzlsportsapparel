@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { preorders } from "../../data/preorders";
 
 export default function PreordersPage() {
@@ -12,6 +13,62 @@ export default function PreordersPage() {
         padding: "40px 20px",
       }}
     >
+      <header
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "20px",
+    flexWrap: "wrap",
+    paddingBottom: "30px",
+    marginBottom: "30px",
+    borderBottom: "1px solid #333",
+  }}
+>
+  <Link
+    href="/"
+    style={{
+      color: "#d6b35a",
+      fontWeight: "bold",
+      fontSize: "22px",
+      textDecoration: "none",
+    }}
+  >
+    HĀZZL SPORTS
+  </Link>
+
+  <nav
+    style={{
+      display: "flex",
+      gap: "18px",
+      flexWrap: "wrap",
+    }}
+  >
+    <Link href="/" style={{ color: "#fff", textDecoration: "none" }}>
+      Home
+    </Link>
+
+    <Link href="/#collections" style={{ color: "#fff", textDecoration: "none" }}>
+      Collections
+    </Link>
+
+    <Link href="/preorders" style={{ color: "#d6b35a", textDecoration: "none" }}>
+      School Preorders
+    </Link>
+
+    <Link href="/#work" style={{ color: "#fff", textDecoration: "none" }}>
+      Our Work
+    </Link>
+
+    <Link href="/#uniform-builder" style={{ color: "#fff", textDecoration: "none" }}>
+      Custom Uniforms
+    </Link>
+
+    <Link href="/#contact" style={{ color: "#fff", textDecoration: "none" }}>
+      Contact
+    </Link>
+  </nav>
+</header>
       <div
         style={{
           maxWidth: "1100px",
