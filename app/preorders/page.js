@@ -227,6 +227,21 @@ export default function PreordersPage() {
           ))
         )}
       </div>
+<div style={{ marginTop: "40px" }}>
+  <Link
+    href="/"
+    style={{
+      display: "inline-block",
+      padding: "12px 18px",
+      background: "#d6b35a",
+      color: "#000",
+      fontWeight: "bold",
+      textDecoration: "none",
+    }}
+  >
+    ← Back to Home
+  </Link>
+</div>
     </main>
   );
 }
